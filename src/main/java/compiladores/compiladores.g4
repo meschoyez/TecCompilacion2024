@@ -17,6 +17,11 @@ LLA : '{' ;
 LLC : '}' ;
 PYC : ';' ;
 IGUAL : '=' ;
+SUMA : '+' ;
+RESTA : '-' ;
+MULT : '*' ;
+DIV : '/' ;
+MOD : '%' ;
 
 INT : 'int' ;
 
@@ -48,5 +53,30 @@ instruccion : LLA instrucciones LLC
 
 declaracion : INT ID PYC ;
 
-asignacion : ID IGUAL NUMERO PYC ;
+asignacion : ID IGUAL exp PYC ;
 
+expresiones : exp PYC expresiones
+            | EOF
+            ;
+
+exp : e ;
+
+e : term t ;
+
+term : factor f ;
+
+t : SUMA  term t
+  | RESTA term t
+  |
+  ;
+
+factor : NUMERO
+       | ID
+       | PA exp PC
+       ;
+
+f : MULT factor f
+  | DIV  factor f
+  | MOD  factor f
+  |
+  ;

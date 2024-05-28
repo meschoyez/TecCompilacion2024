@@ -34,8 +34,8 @@ public class App {
         // ParseTree tree =  parser.programa();
         ParseTree tree =  parser.expresiones();
         // Conectamos el visitor
-        // Caminante visitor = new Caminante();
-        // visitor.visit(tree);
+        Caminante visitor = new Caminante();
+        visitor.visit(tree);
         // System.out.println(visitor);
         // System.out.println(visitor.getErrorNodes());
         // Imprime el arbol obtenido
